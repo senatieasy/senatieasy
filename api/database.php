@@ -7,12 +7,12 @@ class Database{
     private $password;
     private $charset;
     public function __construct(){
-        $data = json_decode(file_get_contents('dbconfig.json'), true);
-        $this->host = $data['server'];
-        $this->db = $data['database'];
-        $this->user = $data['username'];
-        $this->password = $data['password'];
-        $this->charset = $data['charset'];   
+        require_once 'dbconfig.php';
+        $this->host = $dbconfig['server'];
+        $this->db = $dbconfig['database'];
+        $this->user = $dbconfig['username'];
+        $this->password = $dbconfig['password'];
+        $this->charset = $dbconfig['charset'];   
     }
     function connect(){
         try{
