@@ -50,7 +50,6 @@ class DatabaseOld{
     private $user;
     private $password;
     private $charset;
-
     public function __construct(){
         /*
         $local_url = [
