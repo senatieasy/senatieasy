@@ -58,9 +58,9 @@ function compareQuestions() {
 
 $(document).ready(function () {
     var request = {};
-    request.review = '83';
+    request.review = 83;
     $.ajax({
-        url: 'assets/php/getReview.php',
+        url: 'api/review.php',
         type: 'POST',
         dataType: 'JSON',
         headers: {
@@ -74,7 +74,7 @@ $(document).ready(function () {
             $('#review-date').text(`Publicado ${date}`);
             $('#review-views').text(`[${res.review.punctuation.views} visitas]`);
             $('#career').text(res.career.name);
-            $('#semester').text(res.semester.description);
+            $('#semester').text(res.semester.name);
             $('#course').text(res.course.name);
 
             // Punctuations

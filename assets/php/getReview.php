@@ -57,24 +57,22 @@ if (isset($_POST['review'])) {
             SELECT COUNT(interaction) FROM interactions
             WHERE 
                 interaction = 'like' &&
-                id_review = :review1
+                id_review = r.id
         ) AS interaction_likes,
         (
             SELECT COUNT(interaction) FROM interactions
             WHERE 
                 interaction = 'dislike' &&
-                id_review = :review2
+                id_review = r.id
         ) AS interaction_dislikes
     FROM reviews r
     INNER JOIN courses co ON r.id_course = co.id
     INNER JOIN semesters s ON co.id_semester = s.id
     INNER JOIN careers ca ON co.id_career = ca.id
-    WHERE r.id = :review3
+    WHERE r.id = :review
     ");
     $query -> execute([
-        ':review1' => $review,
-        ':review2' => $review,
-        ':review3' => $review
+        ':review' => $review
     ]);
     $row = $query -> fetch(PDO::FETCH_ASSOC);
     // echo json_encode($row);
@@ -88,8 +86,7 @@ if (isset($_POST['review'])) {
 
         // Seteando el semestre
         $data['semester']['id'] = $row['semester_id'];
-        $data['semester']['name'] = $row['semester_id'];
-        $data['semester']['description'] = $row['semester_name'];
+        $data['semester']['name'] = $row['semester_name'];
 
         // Seteando el curso
         $data['course']['id'] = $row['course_id'];

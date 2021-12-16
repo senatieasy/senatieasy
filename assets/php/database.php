@@ -8,9 +8,9 @@ class Database{
     private $charset;
     public function __construct(){
         $data = json_decode(file_get_contents('dbconfig.json'), true);
-        $this->host = $data['host'];
-        $this->db = $data['db'];
-        $this->user = $data['user'];
+        $this->host = $data['server'];
+        $this->db = $data['database'];
+        $this->user = $data['username'];
         $this->password = $data['password'];
         $this->charset = $data['charset'];   
     }
