@@ -2,6 +2,7 @@
 
 require_once 'database.php';
 require_once 'response.php';
+require_once 'guid.php';
 $db = new Database();
 session_start();
 
@@ -59,13 +60,15 @@ try {
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
             }
-          
+            $guid = guid();
             $query = $db->connect()->prepare("INSERT INTO reviews (
+                id_share,
                 review, 
                 contain, 
                 id_course, 
                 id_user
             ) VALUES (
+                :id_share,
                 :review1, 
                 :contain1, 
                 :id_course1, 
@@ -78,6 +81,7 @@ try {
             );
             ");
             $result = $query->execute([
+                ':id_share' => $guid,
                 ':review1' => $_POST['review']['name'],
                 ':contain1' => json_encode($_POST['review']['data']),
                 ':id_course1' => $_POST['course']['id'],
