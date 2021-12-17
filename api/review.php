@@ -159,6 +159,25 @@ try {
             }
             break;
         case 'update':
+            if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
+                throw new Exception('Inicie sesión para continuar...');
+            }
+            $db = new Database();
+            $query = $db->connect()->prepare("UPDATE reviews 
+            set 
+                REVIEW = :review,
+                CONTAIN = :contain,
+                ID_COURSE = :course
+            WHERE
+                ID = :id_review 84
+            ");
+            $result = $query->execute([
+                ':review' => $_POST['review']['name'],
+                ':contain' => json_encode($_POST['review']['data']),
+                ':cource' => $_POST['review']['ID_COURCE'],
+                ':id_review' => $_POST['review']['id'],
+                
+            ]);
             $data['message'] = 'Peticion de update';
             break;
         case 'delete':
