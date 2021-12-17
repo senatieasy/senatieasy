@@ -94,24 +94,6 @@ try {
             }
             break;
         case 'list':
-            /*
-            $_POST['review'] = 83;
-             $_POST['filter'] = [
-                'search' => '%auto%',
-                'start' => 3,
-                'quantity' => 16,
-                'order' => 'ASC'
-            ];
-            $_POST['course'] = [
-                'id' => 49
-            ];
-            $_POST['career'] = [
-                'id' => 32
-            ];
-            $_POST['semester'] = [
-                'id' => 4
-            ];
-            */
             $order = $_POST['filter']['order'] == 'DESC'? 'DESC': 'ASC';
             $query = $db->connect()->prepare("SELECT
                 r.id AS review_id, r.review AS review_name,
@@ -164,12 +146,6 @@ try {
             }
             break;
         case 'update':
-            /*
-            $_POST['review']['name'] = 'dato insertado correctamente';
-            $_POST['review']['data'] = 'Eeste es un array de prueba';
-            $_POST['review']['ID_COURCE'] = 40;
-            $_POST['review']['id'] = 84;
-            */
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
             }
