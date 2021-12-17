@@ -69,21 +69,21 @@ $(document).ready(function () {
         },
         data: JSON.stringify(request),
         success: res => {
-            $('#review-name').text(res.review.name);
-            var date = moment(res.review.date, 'YYYY-MM-DD hh:mm:ss').fromNow();
+            $('#review-name').text(res.data.review.name);
+            var date = moment(res.data.review.date, 'YYYY-MM-DD hh:mm:ss').fromNow();
             $('#review-date').text(`Publicado ${date}`);
-            $('#review-views').text(`[${res.review.punctuation.views} visitas]`);
-            $('#career').text(res.career.name);
-            $('#semester').text(res.semester.name);
-            $('#course').text(res.course.name);
+            $('#review-views').text(`[${res.data.review.punctuation.views} visitas]`);
+            $('#career').text(res.data.career.name);
+            $('#semester').text(res.data.semester.name);
+            $('#course').text(res.data.course.name);
 
             // Punctuations
-            var likes = res.review.punctuation.likes;
-            var dislikes = res.review.punctuation.dislikes;
+            var likes = res.data.review.punctuation.likes;
+            var dislikes = res.data.review.punctuation.dislikes;
             var totalLikeDislike = likes + dislikes;
             var likesPercent = (likes / totalLikeDislike * 100).toFixed(2);
-            var shares = res.review.punctuation.shares;
-            var views = res.review.punctuation.views;
+            var shares = res.data.review.punctuation.shares;
+            var views = res.data.review.punctuation.views;
             var sharesPercent = shares / views * 100;
             $('#punctuation-likes').text(`${likes} 'Me sirvió' de ${totalLikeDislike} calificaciones`);
             $('#punctuation-likes-percent').css('width', `${likesPercent}%`);
@@ -91,7 +91,7 @@ $(document).ready(function () {
             $('#punctuation-shares-percent').css('width', `${sharesPercent}%`);
 
             // Questions & Answers
-            var questions = res.review.data;
+            var questions = res.data.review.data;
             $('#question-total').text(`${questions.length} resultados`);
             
             $('#questions').empty();
