@@ -63,9 +63,15 @@ try {
             }
             $db = new Database();
             $query = $db->connect()->prepare("INSERT INTO reviews (
-                review, contain, id_course, id_user
+                review, 
+                contain, 
+                id_course, 
+                id_user
             ) VALUES (
-                :review1, :contain1, :id_course1, :id_user1
+                :review1, 
+                :contain1, 
+                :id_course1, 
+                :id_user1
             );
             INSERT INTO history (
                 review, contain, id_course, id_user
@@ -90,6 +96,25 @@ try {
             }
             break;
         case 'list':
+            /*
+            $_POST['review'] = 83;
+             $_POST['filter'] = [
+                'search' => '%auto%',
+                'start' => 3,
+                'quantity' => 16,
+                'order' => 'ASC'
+            ];
+            $_POST['course'] = [
+                'id' => 49
+            ];
+            $_POST['career'] = [
+                'id' => 32
+            ];
+            $_POST['semester'] = [
+                'id' => 4
+            ];
+            */
+
             $db = new Database();
             $order = $_POST['filter']['order'] == 'DESC'? 'DESC': 'ASC';
             $query = $db->connect()->prepare("SELECT
@@ -143,26 +168,38 @@ try {
             }
             break;
         case 'update':
+            /*
+            $_POST['review']['name'] = 'dato insertado correctamente';
+            $_POST['review']['data'] = 'Eeste es un array de prueba';
+            $_POST['review']['ID_COURCE'] = 40;
+            $_POST['review']['id'] = 84;
+            */
+            
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
             }
+        
             $db = new Database();
             $query = $db->connect()->prepare("UPDATE reviews 
             set 
                 REVIEW = :review,
                 CONTAIN = :contain,
-                ID_COURSE = :course
+                ID_COURSE = :cource
             WHERE
-                ID = :id_review 84
+                ID = :id_review
             ");
             $result = $query->execute([
                 ':review' => $_POST['review']['name'],
                 ':contain' => json_encode($_POST['review']['data']),
                 ':cource' => $_POST['review']['ID_COURCE'],
-                ':id_review' => $_POST['review']['id'],
+                ':id_review' => $_POST['review']['id']
                 
             ]);
-            $data['message'] = 'Peticion de update';
+            if ($result) {
+                $data['message'] = $_POST['review']['name'] . ' ha sido actualizada correctamente';
+            } else {
+                throw new Exception('Ocurrió un error al actualizar ' . $_POST['review']['name']);
+            }
             break;
         case 'delete':
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
