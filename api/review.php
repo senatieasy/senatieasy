@@ -49,23 +49,7 @@ function setPrettyReview($row)
     return $data;
 }
 
-//$_POST = json_decode(file_get_contents('php://input'), true);
-$_POST['review'] = 83;
-$_POST['filter'] = [
-    'search' => '%auto%',
-    'start' => 3,
-    'quantity' => 10,
-    'order' => 'ASC'
-];
-$_POST['course'] = [
-    'id' => 49
-];
-$_POST['career'] = [
-    'id' => 32
-];
-$_POST['semester'] = [
-    'id' => 4
-];
+$_POST = json_decode(file_get_contents('php://input'), true);
 
 $data = [];
 $data['status'] = 200;
