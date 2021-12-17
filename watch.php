@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-<p></p>
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Senati Easy | Evaluación final del curso - EV1</title>
-  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
-  <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../assets/vendors/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="../assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../assets/vendors/owl-carousel-2/owl.carousel.min.css">
+  <link rel="stylesheet" href="../assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="shortcut icon" href="../assets/images/favicon.png" />
+  <review value="<?php echo $_GET['review']?>"></review>
 </head>
 
 <body>
@@ -30,7 +28,7 @@
                 <div class="card-body py-0 px-0 px-sm-3">
                   <div class="row align-items-center">
                     <div class="col-4 col-sm-3 col-xl-2">
-                      <img src="assets/images/avatar.jpg" width="75px"
+                      <img src="../assets/images/avatar.jpg" width="75px"
                         style="border-radius: 50%; margin-top: 10px; margin-bottom: 10px;"
                         class="gradient-corona-img img-fluid" alt="">
                     </div>
@@ -54,23 +52,23 @@
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 id="review-name" class="card-title mb-1">Evaluación final del curso - EV1</h4>
+                  <h4 id="review-name" class="card-title mb-1">Desconocido</h4>
                   <p class="text-muted">
-                    <span id="review-date">Publicado hace 5 minutos</span>
-                    <span id="review-views">[10 visitas]</span>
+                    <span id="review-date">Publicado hace 0 segundos</span>
+                    <span id="review-views">[0 visitas]</span>
                   </p>
                   <hr class="border-bottom">
                   <div class="flex-grow mb-2">
                     <h6 class="preview-subject">Carrera:</h6>
-                    <p id="career" class="text-muted mb-0">Ingeniería de Software con Inteligencia Artificial</p>
+                    <p id="career" class="text-muted mb-0">Desconocido</p>
                   </div>
                   <div class="flex-grow mb-2">
                     <h6 class="preview-subject">Semestre:</h6>
-                    <p id="semester" class="text-muted mb-0">4to Semestre</p>
+                    <p id="semester" class="text-muted mb-0">Desconocido</p>
                   </div>
                   <div class="flex-grow mb-2">
                     <h6 class="preview-subject">Curso:</h6>
-                    <p id="course" class="text-muted mb-0">Modelado y Diseño del Software</p>
+                    <p id="course" class="text-muted mb-0">Desconocido</p>
                   </div>
                   <hr class="border-bottom">
                   <div class="flex-grow mb-2">
@@ -98,7 +96,7 @@
                   <div class="bg-gray-dark d-md-block py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                     <div class="text-md-center text-xl-left">
                       <h6 class="mb-2">Calificación</h6>
-                      <p id="punctuation-likes" class="text-muted">5/10 (5 calificaciones)</p>
+                      <p id="punctuation-likes" class="text-muted">0/0 (0 calificaciones)</p>
                       <div class="progress progress-md portfolio-progress">
                         <div id="punctuation-likes-percent" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25"
                           aria-valuemin="0" aria-valuemax="100"></div>
@@ -108,7 +106,7 @@
                   <div class="bg-gray-dark d-md-block py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                     <div class="text-md-center text-xl-left">
                       <h6 class="mb-2">Compartidos</h6>
-                      <p id="punctuation-shares" class="text-muted">5/10 (10 visitas)</p>
+                      <p id="punctuation-shares" class="text-muted">0/0 (0 visitas)</p>
                       <div class="progress progress-md portfolio-progress">
                         <div id="punctuation-shares-percent" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25"
                           aria-valuemin="0" aria-valuemax="100"></div>
@@ -126,7 +124,7 @@
                     <div class="preview-list border-top" style="overflow-y: auto; max-height: 360px;">
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
-                          <img src="assets/images/faces/face6.jpg" alt="image" class="rounded-circle">
+                          <img src="../assets/images/faces/face6.jpg" alt="image" class="rounded-circle">
                         </div>
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
@@ -140,7 +138,7 @@
                       </div>
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
-                          <img src="assets/images/faces/face8.jpg" alt="image" class="rounded-circle">
+                          <img src="../assets/images/faces/face8.jpg" alt="image" class="rounded-circle">
                         </div>
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
@@ -154,7 +152,7 @@
                       </div>
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
-                          <img src="assets/images/faces/face9.jpg" alt="image" class="rounded-circle">
+                          <img src="../assets/images/faces/face9.jpg" alt="image" class="rounded-circle">
                         </div>
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
@@ -168,7 +166,7 @@
                       </div>
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
-                          <img src="assets/images/faces/face11.jpg" alt="image" class="rounded-circle">
+                          <img src="../assets/images/faces/face11.jpg" alt="image" class="rounded-circle">
                         </div>
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
@@ -195,7 +193,7 @@
                 <div class="card-body">
                   <div class="d-flex flex-row justify-content-between mb-1">
                     <h4 class="card-title">Preguntas</h4>
-                    <p id="question-total" class="text-muted">10 resultados</p>
+                    <p id="question-total" class="text-muted">0 resultados</p>
                   </div>
 
                   <div class="row">
@@ -251,21 +249,21 @@
       </div>
     </div>
   </div>
-  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-  <script src="assets/vendors/chart.js/Chart.min.js"></script>
-  <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
-  <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-  <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-  <script src="assets/js/off-canvas.js"></script>
-  <script src="assets/js/hoverable-collapse.js"></script>
-  <script src="assets/js/misc.js"></script>
-  <script src="assets/js/settings.js"></script>
-  <script src="assets/js/todolist.js"></script>
-  <script src="assets/js/dashboard.js"></script>
-  <script src="moment.js"></script>
-  <script src="gcompare.js"></script>
-  <script src="main.js"></script>
+  <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="../assets/vendors/chart.js/Chart.min.js"></script>
+  <script src="../assets/vendors/progressbar.js/progressbar.min.js"></script>
+  <script src="../assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="../assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="../assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+  <script src="../assets/js/off-canvas.js"></script>
+  <script src="../assets/js/hoverable-collapse.js"></script>
+  <script src="../assets/js/misc.js"></script>
+  <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/todolist.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+  <script src="../moment.js"></script>
+  <script src="../gcompare.js"></script>
+  <script src="../main.js"></script>
 </body>
 
 </html>

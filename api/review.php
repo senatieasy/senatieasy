@@ -197,7 +197,7 @@ try {
                 INNER JOIN courses co ON r.id_course = co.id
                 INNER JOIN semesters s ON co.id_semester = s.id
                 INNER JOIN careers ca ON co.id_career = ca.id
-                WHERE r.id = :review
+                WHERE r.id_share = :review
             ");
             $query->execute([
                 ':review' => $_POST['review']
