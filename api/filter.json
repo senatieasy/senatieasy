@@ -1,0 +1,14 @@
+{
+    "semester": {
+        "id": ""
+    },
+    "course": {
+        "id": ""
+    },
+    "filter": {
+        "search": "string",
+        "start": 0,
+        "quantity": 10,
+        "order": "ASC | DESC"
+    }
+}

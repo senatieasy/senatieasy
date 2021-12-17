@@ -60,7 +60,7 @@ $(document).ready(function () {
     var request = {};
     request.review = 83;
     $.ajax({
-        url: 'api/review.php',
+        url: 'api/review/listOne',
         type: 'POST',
         dataType: 'JSON',
         headers: {
