@@ -553,7 +553,7 @@
                 <div class="flex-grow">
                   <h6 class="preview-subject">${review.review_name}</h6>
                   <p class="text-muted mb-0">
-                    <a href="#" class="btn btn-sm btn-inverse-primary mb-1">${review.career_name}</a>
+                    <a href="watch/${review.review_id}" class="btn btn-sm btn-inverse-primary mb-1">Ver evaluación</a>
                     <a href="#" class="btn btn-sm btn-inverse-success mb-1">${review.semester_name}</a>
                     <a href="#" class="btn btn-sm btn-inverse-warning mb-1">${review.course_name}</a>
                   </p>
