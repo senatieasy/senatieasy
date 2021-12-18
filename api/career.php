@@ -9,11 +9,15 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 $data = [];
 $data['status'] = 200;
 
+function setPrettyReview($row){
+    $data['career'] =$row['CAREER'];
+}
+
 try {
     $param = isset($_GET['param']) ? $_GET['param'] : '';
     switch ($param) {
         case 'add':
-            $_POST['career']['name'] = 'Administracion de Pruebas';
+            $_POST['career']['name'] = 'Administracion de Pruebas2';
             /*
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
@@ -28,80 +32,38 @@ try {
                 ':career' => $_POST['career']['name'],
             ]);
             if ($result) {
-                $data['message'] = $_POST['review']['name'] . ' ha sido agregada correctamente';
+                $data['message'] = $_POST['career']['name'] . ' ha sido agregada correctamente';
             } else {
-                throw new Exception('Ocurrió un error al agregar ' . $_POST['review']['name']);
+                throw new Exception('Ocurrió un error al agregar ' . $_POST['career']['name']);
             }
             break;
         case 'list':
-            /*
-            $_POST['review'] = 83;
-             $_POST['filter'] = [
-                'search' => '%auto%',
-                'start' => 3,
-                'quantity' => 16,
+            
+             $_POST['career'] = [
+                'search' => '%de%',
+                'start' => 20,
+                'quantity' => 10,
                 'order' => 'ASC'
             ];
-            $_POST['course'] = [
-                'id' => 49
-            ];
-            $_POST['career'] = [
-                'id' => 32
-            ];
-            $_POST['semester'] = [
-                'id' => 4
-            ];
-            */
-            $order = $_POST['filter']['order'] == 'DESC'? 'DESC': 'ASC';
-            $query = $db->connect()->prepare("SELECT
-                r.id AS review_id, r.review AS review_name,
-                r.contain AS review_contain, r.fech_pub AS review_date,
-                co.id AS course_id, co.course AS course_name,
-                s.id AS semester_id, s.semester AS semester_name,
-                ca.id AS career_id, ca.career AS career_name,
-                r.views AS interaction_views, r.shares AS interaction_shares,
-                (
-                    SELECT COUNT(interaction) FROM interactions
-                    WHERE 
-                        interaction = 'like' &&
-                        id_review = r.id
-                ) AS interaction_likes,
-                (
-                    SELECT COUNT(interaction) FROM interactions
-                    WHERE 
-                        interaction = 'dislike' &&
-                        id_review = r.id
-                ) AS interaction_dislikes
-            FROM reviews r
-            INNER JOIN courses co ON r.id_course = co.id
-            INNER JOIN semesters s ON co.id_semester = s.id
-            INNER JOIN careers ca ON co.id_career = ca.id
+            $order = $_POST['career']['order'] == 'DESC'? 'DESC': 'ASC';
+            $query = $db->connect()->prepare("
+            SELECT * FROM careers    
             WHERE
-                r.review LIKE :search AND
-                s.id = :semester AND
-                co.id = :course AND
-                ca.id = :career
-            ORDER BY review_id $order
+                CAREER LIKE :search
+            ORDER BY CAREER $order
             LIMIT :start, :quantity
             ");
             $query->execute([
-                ':search' => $_POST['filter']['search'],
-                ':start' => $_POST['filter']['start'],
-                ':quantity' => $_POST['filter']['quantity'],
-                ':career' => $_POST['career']['id'],
-                ':semester' => $_POST['semester']['id'],
-                ':course' => $_POST['course']['id']
+                ':search' => $_POST['career']['search'],
+                ':start' => $_POST['career']['start'],
+                ':quantity' => $_POST['career']['quantity'],
             ]);
             $rows = $query->fetchAll(PDO::FETCH_ASSOC);
             if (!$rows) {
                 throw new Exception('No hay resultados para esta busqueda');
             }
             $data['message'] = 'Registros listados correctamente';
-            $data['data'] = [];
-            foreach ($rows as $row) {
-                $row = setPrettyReview($row);
-                array_push($data['data'], $row);
-            }
+            $data['data'] = $rows;
             break;
         case 'update':
             /*
@@ -135,15 +97,19 @@ try {
             break;
 
         case 'delete':
+            
+            $_POST['review']['id'] = '';
+            $_POST['review']['id'] = '';
+
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
             }
-            $query = $db -> connect() -> prepare("DELETE
-            FROM reviews r
-            WHERE r.id = :review1;
-            UPDATE history h
-            SET estado = 'Eliminado'
-            WHERE h.id = :review2;
+            $query = $db -> connect() -> prepare("DELETE 
+                FROM careers r
+                WHERE r.id = :id_career;
+                UPDATE history h
+                SET estado = 'Eliminado'
+                WHERE h.id = :id_history;
             ");
             $result = $query -> execute([
                 ':review1' => $_POST['review']['id'],
