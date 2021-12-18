@@ -2,5 +2,6 @@
   RewriteEngine On
   RewriteRule ^review/([0-9a-zA-Z-_]+)$ review.php?param=$1 [QSA]
   RewriteRule ^career/([0-9a-zA-Z-_]+)$ career.php?param=$1 [QSA]
+  RewriteRule ^home/ home.php [QSA]
 
 </IfModule>

@@ -58,9 +58,9 @@ function compareQuestions() {
 
 $(document).ready(function () {
     var request = {};
-    request.review = 83;
+    request.review = $('review').attr('value');
     $.ajax({
-        url: 'api/review/listOne',
+        url: '../api/review/listOne',
         type: 'POST',
         dataType: 'JSON',
         headers: {

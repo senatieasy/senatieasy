@@ -5,6 +5,7 @@
 
 require_once 'database.php';
 require_once 'response.php';
+require_once 'guid.php';
 $db = new Database();
 session_start();
 
@@ -62,13 +63,15 @@ try {
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
             }
-          
+            $guid = guid();
             $query = $db->connect()->prepare("INSERT INTO reviews (
+                id_share,
                 review, 
                 contain, 
                 id_course, 
                 id_user
             ) VALUES (
+                :id_share,
                 :review1, 
                 :contain1, 
                 :id_course1, 
@@ -81,6 +84,7 @@ try {
             );
             ");
             $result = $query->execute([
+                ':id_share' => $guid,
                 ':review1' => $_POST['review']['name'],
                 ':contain1' => json_encode($_POST['review']['data']),
                 ':id_course1' => $_POST['course']['id'],
@@ -97,24 +101,6 @@ try {
             }
             break;
         case 'list':
-            /*
-            $_POST['review'] = 83;
-             $_POST['filter'] = [
-                'search' => '%auto%',
-                'start' => 3,
-                'quantity' => 16,
-                'order' => 'ASC'
-            ];
-            $_POST['course'] = [
-                'id' => 49
-            ];
-            $_POST['career'] = [
-                'id' => 32
-            ];
-            $_POST['semester'] = [
-                'id' => 4
-            ];
-            */
             $order = $_POST['filter']['order'] == 'DESC'? 'DESC': 'ASC';
             $query = $db->connect()->prepare("SELECT
                 r.id AS review_id, r.review AS review_name,
@@ -167,12 +153,6 @@ try {
             }
             break;
         case 'update':
-            /*
-            $_POST['review']['name'] = 'dato insertado correctamente';
-            $_POST['review']['data'] = 'Eeste es un array de prueba';
-            $_POST['review']['ID_COURCE'] = 40;
-            $_POST['review']['id'] = 84;
-            */
             if (!(isset($_SESSION['status']) && $_SESSION['status'])) {
                 throw new Exception('Inicie sesión para continuar...');
             }
@@ -246,7 +226,7 @@ try {
                 INNER JOIN courses co ON r.id_course = co.id
                 INNER JOIN semesters s ON co.id_semester = s.id
                 INNER JOIN careers ca ON co.id_career = ca.id
-                WHERE r.id = :review
+                WHERE r.id_share = :review
             ");
             $query->execute([
                 ':review' => $_POST['review']
